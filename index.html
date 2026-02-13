@@ -17,8 +17,9 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background-color: #f0f0f0;
             color: #1a1a1a;
-            line-height: 1.4;
+            line-height: 1.6; /* Увеличено для читаемости */
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Плавный скролл по якорям */
         }
 
         .container {
@@ -28,14 +29,16 @@
             width: 100%;
         }
 
-        /* Шапка */
+        /* Шапка - с улучшенной навигацией */
         .header {
             background: #2b2b2b;
             color: white;
             padding: 15px 0;
             border-bottom: 3px solid #cc7b2b;
-            position: relative;
-            z-index: 10;
+            position: sticky; /* Липкая шапка для удобства */
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .header .container {
@@ -47,8 +50,8 @@
         }
 
         .site-title {
-            font-size: 22px;
-            font-weight: 600;
+            font-size: 24px; /* Чуть крупнее */
+            font-weight: 700; /* Жирнее */
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -60,23 +63,43 @@
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 5px;
         }
 
         .nav-links a {
             color: #ddd;
             text-decoration: none;
             margin-left: 25px;
-            font-size: 15px;
-            transition: color 0.2s ease;
-            padding: 5px 0;
+            font-size: 16px; /* Крупнее */
+            font-weight: 500;
+            transition: all 0.2s ease;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Добавил иконки для наглядности */
+        .nav-links a::before {
+            content: "→";
+            color: #cc7b2b;
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .nav-links a:hover {
             color: #cc7b2b;
+            border-bottom-color: #cc7b2b;
         }
 
-        /* Герой с Vanta */
+        /* Герой с Vanta - НЕ ТРОГАЕМ */
         .hero-vanta {
             position: relative;
             width: 100%;
@@ -131,6 +154,7 @@
             color: #f0f0f0;
             margin-bottom: 30px;
             opacity: 0.9;
+            max-width: 550px;
         }
 
         .btn {
@@ -146,6 +170,7 @@
             margin-right: 10px;
             display: inline-block;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn:hover {
@@ -172,77 +197,92 @@
             border-color: #cc7b2b;
         }
 
-        /* Блок с цифрами */
+        /* Блок с цифрами - больше контраста */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin: 40px 0;
+            gap: 25px;
+            margin: 60px 0 50px;
         }
 
         .stat-item {
             background: white;
             border: 1px solid #ccc;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
             transition: all 0.2s ease;
             cursor: default;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         .stat-item:hover {
             transform: translateY(-5px);
             border-color: #cc7b2b;
-            box-shadow: 0 6px 12px rgba(204, 123, 43, 0.15);
+            box-shadow: 0 12px 24px rgba(204, 123, 43, 0.15);
         }
 
         .stat-number {
-            font-size: 38px;
-            font-weight: 700;
+            font-size: 48px; /* Крупнее */
+            font-weight: 800; /* Жирнее */
             color: #2b2b2b;
+            line-height: 1.2;
+            margin-bottom: 10px;
         }
 
         .stat-label {
-            color: #666;
-            font-size: 14px;
+            color: #555;
+            font-size: 16px; /* Крупнее */
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
-        /* Заголовки секций */
+        /* Заголовки секций - более выраженные */
         .section-title {
-            font-size: 32px;
-            font-weight: 600;
-            margin: 50px 0 30px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #cc7b2b;
+            font-size: 38px; /* Крупнее */
+            font-weight: 700; /* Жирнее */
+            margin: 70px 0 35px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #cc7b2bdeb; /* Чуть ярче */
             display: inline-block;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
         }
 
-        /* Карточки станков */
+        /* Добавил якоря для навигации */
+        .section-anchor {
+            scroll-margin-top: 80px;
+        }
+
+        /* Карточки станков - улучшенная читаемость */
         .machines {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 30px;
             margin: 30px 0;
         }
 
         .machine-card {
             background: white;
             border: 1px solid #ccc;
-            padding: 20px;
+            padding: 25px;
             transition: all 0.3s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .machine-card:hover {
             transform: translateY(-8px);
             border-color: #cc7b2b;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
         }
 
         .machine-img {
-            height: 180px;
+            height: 200px; /* Чуть выше */
             background: #e0e0e0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             background-size: cover;
             background-position: center;
             border: 1px solid #aaa;
@@ -254,8 +294,9 @@
         }
 
         .machine-card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 24px; /* Крупнее */
+            font-weight: 700; /* Жирнее */
+            margin-bottom: 15px;
             transition: color 0.2s ease;
         }
 
@@ -265,14 +306,35 @@
 
         .machine-card ul {
             list-style: none;
-            margin: 15px 0;
+            margin: 15px 0 20px;
+            flex-grow: 1;
         }
 
         .machine-card li {
-            padding: 6px 0;
+            padding: 8px 0; /* Больше отступов */
             border-bottom: 1px dashed #ccc;
-            font-size: 14px;
+            font-size: 15px; /* Крупнее */
             transition: border-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Добавил эмодзи как маркеры для лучшего восприятия */
+        .machine-card li:nth-child(1)::before {
+            content: "⚙️";
+            font-size: 16px;
+        }
+        .machine-card li:nth-child(2)::before {
+            content: "📏";
+            font-size: 16px;
+        }
+        .machine-card li:nth-child(3)::before {
+            content: "⚡";
+            font-size: 16px;
+        }
+        .machine-card li::before {
+            margin-right: 5px;
         }
 
         .machine-card:hover li {
@@ -280,11 +342,13 @@
         }
 
         .price {
-            font-size: 26px;
-            font-weight: 700;
-            margin: 15px 0;
+            font-size: 28px; /* Крупнее */
+            font-weight: 800; /* Жирнее */
+            margin: 15px 0 20px;
             color: #2b2b2b;
             transition: color 0.2s ease;
+            border-top: 2px solid #f0f0f0;
+            padding-top: 15px;
         }
 
         .machine-card:hover .price {
@@ -295,13 +359,16 @@
             background: #2b2b2b;
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px; /* Выше */
             width: 100%;
-            font-weight: 600;
+            font-weight: 700; /* Жирнее */
             cursor: pointer;
             border-bottom: 3px solid #cc7b2b;
             transition: all 0.2s ease;
-            font-size: 15px;
+            font-size: 16px; /* Крупнее */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: auto;
         }
 
         .btn-card:hover {
@@ -315,39 +382,42 @@
             border-bottom-width: 2px;
         }
 
-        /* Блок проволоки */
+        /* Блок проволоки - лучше структурирован */
         .wire-section {
             background: white;
             border: 1px solid #ccc;
-            padding: 30px;
-            margin: 50px 0;
+            padding: 40px;
+            margin: 70px 0;
             transition: box-shadow 0.3s ease;
         }
 
         .wire-section:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
         }
 
         .wire-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
             gap: 15px;
         }
 
         .wire-header h2 {
-            font-size: 26px;
+            font-size: 30px; /* Крупнее */
+            font-weight: 700;
         }
 
         .badge {
             background: #cc7b2b;
             color: white;
-            padding: 6px 20px;
-            font-weight: 600;
+            padding: 8px 25px; /* Больше отступов */
+            font-weight: 700; /* Жирнее */
             font-size: 16px;
             transition: transform 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .badge:hover {
@@ -357,81 +427,92 @@
         .wire-list {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 20px; /* Больше gap */
         }
 
         .wire-item {
             background: #f8f8f8;
             border: 1px solid #ddd;
-            padding: 15px;
+            padding: 20px 15px; /* Больше отступов */
             text-align: center;
             transition: all 0.2s ease;
             cursor: default;
         }
 
         .wire-item:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: #cc7b2b;
             background: white;
-            box-shadow: 0 6px 12px rgba(204, 123, 43, 0.15);
+            box-shadow: 0 10px 20px rgba(204, 123, 43, 0.15);
         }
 
         .wire-item p {
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-weight: 700; /* Жирнее */
+            margin-bottom: 8px;
+            font-size: 18px; /* Крупнее */
         }
 
         .wire-price {
             color: #cc7b2b;
-            font-weight: 700;
-            font-size: 20px;
+            font-weight: 800; /* Жирнее */
+            font-size: 24px; /* Крупнее */
             transition: color 0.2s ease;
+            margin-bottom: 5px;
         }
 
-        /* Отзывы */
+        .wire-item small {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Отзывы - более читаемые */
         .reviews {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin: 40px 0 60px;
+            gap: 30px;
+            margin: 50px 0 70px;
         }
 
         .review-item {
             background: white;
             border: 1px solid #ccc;
-            padding: 25px;
+            padding: 30px;
             transition: all 0.3s ease;
             position: relative;
         }
 
         .review-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: #cc7b2b;
-            box-shadow: 0 10px 20px rgba(204, 123, 43, 0.15);
+            box-shadow: 0 20px 30px -10px rgba(204, 123, 43, 0.2);
         }
 
         .review-item::before {
             content: '"';
             position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 60px;
+            top: 15px;
+            left: 20px;
+            font-size: 70px;
             color: #cc7b2b20;
             font-family: serif;
         }
 
         .review-text {
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #333;
             position: relative;
             z-index: 2;
-            padding-top: 20px;
+            padding-top: 25px;
+            font-size: 16px; /* Четкий размер */
+            line-height: 1.7; /* Больше межстрочник */
         }
 
         .review-author {
             font-weight: 700;
             color: #2b2b2b;
+            font-size: 18px; /* Крупнее */
+            margin-bottom: 4px;
         }
 
         .review-company {
@@ -439,7 +520,7 @@
             color: #777;
         }
 
-        /* Модальное окно */
+        /* Модальное окно - улучшенные формы */
         .modal {
             display: none;
             position: fixed;
@@ -461,7 +542,7 @@
             background: white;
             max-width: 500px;
             width: 90%;
-            padding: 40px;
+            padding: 45px;
             position: relative;
             border-left: 5px solid #cc7b2b;
             max-height: 90vh;
@@ -472,10 +553,11 @@
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 30px;
+            font-size: 32px;
             cursor: pointer;
             color: #999;
             transition: color 0.2s;
+            line-height: 1;
         }
 
         .modal-close:hover {
@@ -483,68 +565,93 @@
         }
 
         .modal h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 32px; /* Крупнее */
+            font-weight: 700;
+            margin-bottom: 25px;
             color: #2b2b2b;
         }
 
         .modal-specs {
-            margin: 20px 0;
+            margin: 25px 0;
+            background: #f8f8f8;
+            padding: 20px;
         }
 
         .modal-specs p {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px dashed #ccc;
+            font-size: 16px;
+        }
+        .modal-specs p:last-child {
+            border-bottom: none;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 600;
             color: #555;
+            font-size: 15px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 12px;
+            padding: 14px; /* Больше отступов */
             border: 1px solid #ccc;
             font-size: 16px;
             transition: border-color 0.2s;
+            background: #f8f8f8;
         }
 
         .form-group input:focus {
             outline: none;
             border-color: #cc7b2b;
+            background: white;
+            box-shadow: 0 0 0 2px rgba(204,123,43,0.2);
+        }
+
+        /* Подсказки для полей */
+        .form-group input::placeholder {
+            color: #aaa;
+            font-size: 14px;
         }
 
         .btn-modal {
             background: #2b2b2b;
             color: white;
             border: none;
-            padding: 15px;
+            padding: 16px;
             width: 100%;
             font-weight: 700;
             cursor: pointer;
             border-bottom: 3px solid #cc7b2b;
             transition: all 0.2s;
-            font-size: 16px;
+            font-size: 17px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn-modal:hover {
             background: #3a3a3a;
             transform: translateY(-2px);
+            border-bottom-width: 4px;
+        }
+
+        .btn-modal:active {
+            transform: translateY(0);
+            border-bottom-width: 2px;
         }
 
         /* Футер */
         .footer {
             background: #2b2b2b;
             color: #aaa;
-            padding: 30px 0;
-            margin-top: 50px;
+            padding: 40px 0;
+            margin-top: 70px;
             border-top: 3px solid #cc7b2b;
         }
 
@@ -554,6 +661,15 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
+        }
+
+        .footer a {
+            color: #cc7b2b;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         /* Фото для карточек */
@@ -608,6 +724,9 @@
             .hero-text {
                 padding: 30px;
             }
+            .section-title {
+                font-size: 32px;
+            }
         }
 
         @media screen and (max-width: 576px) {
@@ -627,6 +746,7 @@
                 display: block;
                 width: 100%;
                 margin: 10px 0;
+                text-align: center;
             }
             .footer .container {
                 flex-direction: column;
@@ -637,20 +757,20 @@
     <!-- AOS CSS уже подключен сверху -->
 </head>
 <body>
-    <!-- Шапка -->
+    <!-- Шапка с улучшенной навигацией -->
     <div class="header">
         <div class="container">
             <div class="site-title">ЗАВОД <span>ГВОЗДЬ.БЕЛ</span></div>
             <div class="nav-links">
-                <a href="#">Станки</a>
-                <a href="#">Проволока</a>
-                <a href="#">Доставка</a>
-                <a href="#">Контакты</a>
+                <a href="#machines">Станки</a>
+                <a href="#wire">Проволока</a>
+                <a href="#delivery">Доставка</a>
+                <a href="#contacts">Контакты</a>
             </div>
         </div>
     </div>
 
-    <!-- Герой с Vanta Globe (чистый фон) -->
+    <!-- Герой с Vanta Globe (чистый фон) - НЕ ТРОГАЕМ -->
     <div class="hero-vanta">
         <div id="vanta-bg"></div>
         <div class="container hero-content">
@@ -665,8 +785,8 @@
                     Доставка по РБ, пусконаладка, обучение.
                 </p>
                 <div>
-                    <button class="btn">Каталог станков</button>
-                    <button class="btn btn-light">Прайс на проволоку</button>
+                    <button class="btn" onclick="document.getElementById('machines').scrollIntoView({behavior: 'smooth'})">Каталог станков</button>
+                    <button class="btn btn-light" onclick="document.getElementById('wire').scrollIntoView({behavior: 'smooth'})">Прайс на проволоку</button>
                 </div>
             </div>
         </div>
@@ -693,16 +813,16 @@
             </div>
         </div>
 
-        <!-- Модельный ряд -->
-        <h2 class="section-title" data-aos="fade-right">Модельный ряд станков</h2>
+        <!-- Модельный ряд с якорем -->
+        <h2 id="machines" class="section-title section-anchor" data-aos="fade-right">Модельный ряд станков</h2>
         <div class="machines">
             <div class="machine-card" onclick="openModal('modal-200')" data-aos="flip-left" data-aos-delay="100">
                 <div class="machine-img img1"></div>
                 <h3>АСГ-200</h3>
                 <ul>
-                    <li>⚙️ Диаметр гвоздя: 1.8–3.5 мм</li>
-                    <li>📏 Длина гвоздя: 25–100 мм</li>
-                    <li>🔨 Производительность: 400 кг/смена</li>
+                    <li>Диаметр гвоздя: 1.8–3.5 мм</li>
+                    <li>Длина гвоздя: 25–100 мм</li>
+                    <li>Производительность: 400 кг/смена</li>
                 </ul>
                 <div class="price">12 900 BYN</div>
                 <button class="btn-card" onclick="event.stopPropagation(); openModal('modal-200')">Подробнее</button>
@@ -711,9 +831,9 @@
                 <div class="machine-img img2"></div>
                 <h3>АСГ-500</h3>
                 <ul>
-                    <li>⚙️ Диаметр гвоздя: 2.5–5.0 мм</li>
-                    <li>📏 Длина гвоздя: 30–200 мм</li>
-                    <li>🔨 Производительность: 900 кг/смена</li>
+                    <li>Диаметр гвоздя: 2.5–5.0 мм</li>
+                    <li>Длина гвоздя: 30–200 мм</li>
+                    <li>Производительность: 900 кг/смена</li>
                 </ul>
                 <div class="price">18 900 BYN</div>
                 <button class="btn-card" onclick="event.stopPropagation(); openModal('modal-500')">Подробнее</button>
@@ -722,17 +842,17 @@
                 <div class="machine-img img3"></div>
                 <h3>АСГ-1000</h3>
                 <ul>
-                    <li>⚙️ Диаметр гвоздя: 4.0–8.0 мм</li>
-                    <li>📏 Длина гвоздя: 50–300 мм</li>
-                    <li>🔨 Производительность: 1500 кг/смена</li>
+                    <li>Диаметр гвоздя: 4.0–8.0 мм</li>
+                    <li>Длина гвоздя: 50–300 мм</li>
+                    <li>Производительность: 1500 кг/смена</li>
                 </ul>
                 <div class="price">24 900 BYN</div>
                 <button class="btn-card" onclick="event.stopPropagation(); openModal('modal-1000')">Подробнее</button>
             </div>
         </div>
 
-        <!-- Проволока -->
-        <div class="wire-section" data-aos="zoom-in" data-aos-duration="800">
+        <!-- Проволока с якорем -->
+        <div id="wire" class="wire-section section-anchor" data-aos="zoom-in" data-aos-duration="800">
             <div class="wire-header">
                 <h2>Проволока для станков</h2>
                 <span class="badge">склад в Минске</span>
@@ -759,7 +879,7 @@
                     <small>3.5 / 4.5 мм</small>
                 </div>
             </div>
-            <p style="margin-top: 25px; color: #444; font-size: 14px;" data-aos="fade-up" data-aos-delay="500">✅ Доставка по всей Беларуси. От 100 кг — скидка.</p>
+            <p style="margin-top: 30px; color: #444; font-size: 15px; font-weight: 500;" data-aos="fade-up" data-aos-delay="500">✅ Доставка по всей Беларуси. От 100 кг — скидка.</p>
         </div>
 
         <!-- Отзывы -->
@@ -789,15 +909,15 @@
         </div>
     </div>
 
-    <!-- Футер -->
-    <div class="footer">
+    <!-- Футер с якорем контактов -->
+    <div id="contacts" class="footer section-anchor">
         <div class="container">
             <div>© 2026 ЗАВОД ГВОЗДЬ.БЕЛ</div>
-            <div>+375 (29) 123-45-67 | info@gvozd.by</div>
+            <div>+375 (29) 123-45-67 | <a href="mailto:info@gvozd.by">info@gvozd.by</a></div>
         </div>
     </div>
 
-    <!-- Модальные окна (те же) -->
+    <!-- Модальные окна -->
     <div id="modal-200" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('modal-200')">&times;</span>
@@ -810,9 +930,9 @@
                 <p><strong>Вес:</strong> 550 кг</p>
                 <p><strong>Гарантия:</strong> 3 года</p>
             </div>
-            <div class="price" style="font-size: 32px; text-align: center;">12 900 BYN</div>
-            <h3 style="margin: 20px 0 15px;">Заказать станок</h3>
-            <form id="form-200" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.'); closeModal('modal-200');">
+            <div class="price" style="font-size: 34px; text-align: center;">12 900 BYN</div>
+            <h3 style="margin: 25px 0 15px; font-size: 24px;">Заказать станок</h3>
+            <form id="form-200" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.'); closeModal('modal-200');">
                 <div class="form-group">
                     <label>Ваше имя</label>
                     <input type="text" required placeholder="Иван Петров">
@@ -820,6 +940,10 @@
                 <div class="form-group">
                     <label>Телефон</label>
                     <input type="tel" required placeholder="+375 29 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label>Email (для уточнений)</label>
+                    <input type="email" placeholder="ivan@example.com">
                 </div>
                 <button type="submit" class="btn-modal">Отправить заявку</button>
             </form>
@@ -838,9 +962,9 @@
                 <p><strong>Вес:</strong> 780 кг</p>
                 <p><strong>Гарантия:</strong> 3 года</p>
             </div>
-            <div class="price" style="font-size: 32px; text-align: center;">18 900 BYN</div>
-            <h3 style="margin: 20px 0 15px;">Заказать станок</h3>
-            <form id="form-500" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.'); closeModal('modal-500');">
+            <div class="price" style="font-size: 34px; text-align: center;">18 900 BYN</div>
+            <h3 style="margin: 25px 0 15px; font-size: 24px;">Заказать станок</h3>
+            <form id="form-500" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.'); closeModal('modal-500');">
                 <div class="form-group">
                     <label>Ваше имя</label>
                     <input type="text" required placeholder="Иван Петров">
@@ -848,6 +972,10 @@
                 <div class="form-group">
                     <label>Телефон</label>
                     <input type="tel" required placeholder="+375 29 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label>Email (для уточнений)</label>
+                    <input type="email" placeholder="ivan@example.com">
                 </div>
                 <button type="submit" class="btn-modal">Отправить заявку</button>
             </form>
@@ -866,9 +994,9 @@
                 <p><strong>Вес:</strong> 1200 кг</p>
                 <p><strong>Гарантия:</strong> 3 года</p>
             </div>
-            <div class="price" style="font-size: 32px; text-align: center;">24 900 BYN</div>
-            <h3 style="margin: 20px 0 15px;">Заказать станок</h3>
-            <form id="form-1000" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.'); closeModal('modal-1000');">
+            <div class="price" style="font-size: 34px; text-align: center;">24 900 BYN</div>
+            <h3 style="margin: 25px 0 15px; font-size: 24px;">Заказать станок</h3>
+            <form id="form-1000" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.'); closeModal('modal-1000');">
                 <div class="form-group">
                     <label>Ваше имя</label>
                     <input type="text" required placeholder="Иван Петров">
@@ -876,6 +1004,10 @@
                 <div class="form-group">
                     <label>Телефон</label>
                     <input type="tel" required placeholder="+375 29 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label>Email (для уточнений)</label>
+                    <input type="email" placeholder="ivan@example.com">
                 </div>
                 <button type="submit" class="btn-modal">Отправить заявку</button>
             </form>
@@ -906,7 +1038,7 @@
         // Инициализация AOS
         AOS.init({
             duration: 800,
-            once: true, // анимация только один раз
+            once: true,
             offset: 100,
         });
 
@@ -961,7 +1093,6 @@
             });
         }
 
-        // Запускаем счетчик когда элемент появляется
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -974,7 +1105,6 @@
             observer.observe(stats);
         });
 
-        // Обновляем AOS при загрузке
         window.addEventListener('load', () => {
             AOS.refresh();
         });
