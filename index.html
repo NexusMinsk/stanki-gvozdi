@@ -6,6 +6,8 @@
     <title>Станки для гвоздей | Производство в РБ</title>
     <!-- AOS библиотека для анимаций -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -17,9 +19,9 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background-color: #f0f0f0;
             color: #1a1a1a;
-            line-height: 1.6; /* Увеличено для читаемости */
+            line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth; /* Плавный скролл по якорям */
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -29,13 +31,13 @@
             width: 100%;
         }
 
-        /* Шапка - с улучшенной навигацией */
+        /* Шапка */
         .header {
             background: #2b2b2b;
             color: white;
             padding: 15px 0;
             border-bottom: 3px solid #cc7b2b;
-            position: sticky; /* Липкая шапка для удобства */
+            position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
@@ -50,8 +52,8 @@
         }
 
         .site-title {
-            font-size: 24px; /* Чуть крупнее */
-            font-weight: 700; /* Жирнее */
+            font-size: 24px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -70,7 +72,7 @@
             color: #ddd;
             text-decoration: none;
             margin-left: 25px;
-            font-size: 16px; /* Крупнее */
+            font-size: 16px;
             font-weight: 500;
             transition: all 0.2s ease;
             padding: 8px 0;
@@ -80,7 +82,6 @@
             gap: 6px;
         }
 
-        /* Добавил иконки для наглядности */
         .nav-links a::before {
             content: "→";
             color: #cc7b2b;
@@ -197,7 +198,7 @@
             border-color: #cc7b2b;
         }
 
-        /* Блок с цифрами - больше контраста */
+        /* Блок с цифрами */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -222,8 +223,8 @@
         }
 
         .stat-number {
-            font-size: 48px; /* Крупнее */
-            font-weight: 800; /* Жирнее */
+            font-size: 48px;
+            font-weight: 800;
             color: #2b2b2b;
             line-height: 1.2;
             margin-bottom: 10px;
@@ -231,30 +232,29 @@
 
         .stat-label {
             color: #555;
-            font-size: 16px; /* Крупнее */
+            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 500;
         }
 
-        /* Заголовки секций - более выраженные */
+        /* Заголовки секций */
         .section-title {
-            font-size: 38px; /* Крупнее */
-            font-weight: 700; /* Жирнее */
+            font-size: 38px;
+            font-weight: 700;
             margin: 70px 0 35px;
             padding-bottom: 15px;
-            border-bottom: 4px solid #cc7b2bdeb; /* Чуть ярче */
+            border-bottom: 4px solid #cc7b2b;
             display: inline-block;
             color: #1a1a1a;
             letter-spacing: -0.5px;
         }
 
-        /* Добавил якоря для навигации */
         .section-anchor {
             scroll-margin-top: 80px;
         }
 
-        /* Карточки станков - улучшенная читаемость */
+        /* Карточки станков */
         .machines {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -280,7 +280,7 @@
         }
 
         .machine-img {
-            height: 200px; /* Чуть выше */
+            height: 200px;
             background: #e0e0e0;
             margin-bottom: 20px;
             background-size: cover;
@@ -294,8 +294,8 @@
         }
 
         .machine-card h3 {
-            font-size: 24px; /* Крупнее */
-            font-weight: 700; /* Жирнее */
+            font-size: 24px;
+            font-weight: 700;
             margin-bottom: 15px;
             transition: color 0.2s ease;
         }
@@ -311,16 +311,15 @@
         }
 
         .machine-card li {
-            padding: 8px 0; /* Больше отступов */
+            padding: 8px 0;
             border-bottom: 1px dashed #ccc;
-            font-size: 15px; /* Крупнее */
+            font-size: 15px;
             transition: border-color 0.2s ease;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* Добавил эмодзи как маркеры для лучшего восприятия */
         .machine-card li:nth-child(1)::before {
             content: "⚙️";
             font-size: 16px;
@@ -342,8 +341,8 @@
         }
 
         .price {
-            font-size: 28px; /* Крупнее */
-            font-weight: 800; /* Жирнее */
+            font-size: 28px;
+            font-weight: 800;
             margin: 15px 0 20px;
             color: #2b2b2b;
             transition: color 0.2s ease;
@@ -359,13 +358,13 @@
             background: #2b2b2b;
             color: white;
             border: none;
-            padding: 14px; /* Выше */
+            padding: 14px;
             width: 100%;
-            font-weight: 700; /* Жирнее */
+            font-weight: 700;
             cursor: pointer;
             border-bottom: 3px solid #cc7b2b;
             transition: all 0.2s ease;
-            font-size: 16px; /* Крупнее */
+            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: auto;
@@ -382,7 +381,7 @@
             border-bottom-width: 2px;
         }
 
-        /* Блок проволоки - лучше структурирован */
+        /* Блок проволоки */
         .wire-section {
             background: white;
             border: 1px solid #ccc;
@@ -405,15 +404,15 @@
         }
 
         .wire-header h2 {
-            font-size: 30px; /* Крупнее */
+            font-size: 30px;
             font-weight: 700;
         }
 
         .badge {
             background: #cc7b2b;
             color: white;
-            padding: 8px 25px; /* Больше отступов */
-            font-weight: 700; /* Жирнее */
+            padding: 8px 25px;
+            font-weight: 700;
             font-size: 16px;
             transition: transform 0.2s ease;
             text-transform: uppercase;
@@ -427,13 +426,13 @@
         .wire-list {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px; /* Больше gap */
+            gap: 20px;
         }
 
         .wire-item {
             background: #f8f8f8;
             border: 1px solid #ddd;
-            padding: 20px 15px; /* Больше отступов */
+            padding: 20px 15px;
             text-align: center;
             transition: all 0.2s ease;
             cursor: default;
@@ -447,15 +446,15 @@
         }
 
         .wire-item p {
-            font-weight: 700; /* Жирнее */
+            font-weight: 700;
             margin-bottom: 8px;
-            font-size: 18px; /* Крупнее */
+            font-size: 18px;
         }
 
         .wire-price {
             color: #cc7b2b;
-            font-weight: 800; /* Жирнее */
-            font-size: 24px; /* Крупнее */
+            font-weight: 800;
+            font-size: 24px;
             transition: color 0.2s ease;
             margin-bottom: 5px;
         }
@@ -465,62 +464,139 @@
             font-size: 14px;
         }
 
-        /* Отзывы - более читаемые */
+        /* НОВАЯ СЕКЦИЯ: Преимущества */
+        .benefits-section {
+            background: linear-gradient(145deg, #2b2b2b 0%, #1f1f1f 100%);
+            padding: 60px 0;
+            margin: 70px 0;
+            border-radius: 40px;
+            color: white;
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.4);
+            border: 1px solid #cc7b2b30;
+        }
+        .benefits-section .section-title {
+            color: white;
+            border-bottom-color: #cc7b2b;
+            margin-top: 0;
+            margin-left: 20px;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #cc7b2b20;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            border-color: #cc7b2b;
+            background: rgba(204,123,43,0.1);
+            box-shadow: 0 15px 30px rgba(204,123,43,0.2);
+        }
+        .benefit-icon {
+            font-size: 48px;
+            color: #cc7b2b;
+            margin-bottom: 20px;
+        }
+        .benefit-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .benefit-item p {
+            color: #bbb;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* Отзывы - переработаны, убраны лишние отступы */
+        .reviews-section {
+            background: #f8f6f2;
+            padding: 60px 0;
+            margin: 70px 0;
+            border-radius: 50px 50px 20px 20px;
+            box-shadow: inset 0 0 0 1px rgba(204,123,43,0.2), 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+        .reviews-section .section-title {
+            margin-left: 20px;
+        }
         .reviews {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin: 50px 0 70px;
+            padding: 0 20px;
+            margin-top: 30px;
         }
-
-        .review-item {
+        .review-card {
             background: white;
-            border: 1px solid #ccc;
-            padding: 30px;
+            padding: 30px 25px;
+            border-radius: 30px 10px 30px 10px;
             transition: all 0.3s ease;
+            border: 1px solid #e0d6cc;
+            box-shadow: 0 8px 0 #cc7b2b20;
             position: relative;
         }
-
-        .review-item:hover {
+        .review-card:hover {
             transform: translateY(-8px);
             border-color: #cc7b2b;
-            box-shadow: 0 20px 30px -10px rgba(204, 123, 43, 0.2);
+            box-shadow: 0 15px 0 #cc7b2b30, 0 20px 30px -10px #cc7b2b40;
         }
-
-        .review-item::before {
-            content: '"';
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 70px;
-            color: #cc7b2b20;
-            font-family: serif;
+        .review-rating {
+            color: #ffb800;
+            font-size: 18px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
-
+        .review-rating i {
+            margin-right: 3px;
+        }
         .review-text {
-            font-style: italic;
-            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.7;
             color: #333;
+            margin-bottom: 25px;
+            font-style: italic;
             position: relative;
-            z-index: 2;
-            padding-top: 25px;
-            font-size: 16px; /* Четкий размер */
-            line-height: 1.7; /* Больше межстрочник */
+            padding-left: 15px;
+            border-left: 3px solid #cc7b2b40;
         }
-
-        .review-author {
+        .review-author-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: #cc7b2b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 0 #9e5f22;
+        }
+        .review-author-info h4 {
             font-weight: 700;
-            color: #2b2b2b;
-            font-size: 18px; /* Крупнее */
+            font-size: 18px;
             margin-bottom: 4px;
         }
-
-        .review-company {
-            font-size: 14px;
+        .review-author-info p {
+            font-size: 13px;
             color: #777;
         }
 
-        /* Модальное окно - улучшенные формы */
+        /* Модальное окно */
         .modal {
             display: none;
             position: fixed;
@@ -565,7 +641,7 @@
         }
 
         .modal h2 {
-            font-size: 32px; /* Крупнее */
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 25px;
             color: #2b2b2b;
@@ -600,7 +676,7 @@
 
         .form-group input {
             width: 100%;
-            padding: 14px; /* Больше отступов */
+            padding: 14px;
             border: 1px solid #ccc;
             font-size: 16px;
             transition: border-color 0.2s;
@@ -614,7 +690,6 @@
             box-shadow: 0 0 0 2px rgba(204,123,43,0.2);
         }
 
-        /* Подсказки для полей */
         .form-group input::placeholder {
             color: #aaa;
             font-size: 14px;
@@ -699,6 +774,9 @@
             .reviews {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -709,6 +787,9 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             .reviews {
+                grid-template-columns: 1fr;
+            }
+            .benefits-grid {
                 grid-template-columns: 1fr;
             }
             .header .container {
@@ -754,23 +835,23 @@
             }
         }
     </style>
-    <!-- AOS CSS уже подключен сверху -->
 </head>
 <body>
-    <!-- Шапка с улучшенной навигацией -->
+    <!-- Шапка -->
     <div class="header">
         <div class="container">
             <div class="site-title">ЗАВОД <span>ГВОЗДЬ.БЕЛ</span></div>
             <div class="nav-links">
                 <a href="#machines">Станки</a>
                 <a href="#wire">Проволока</a>
-                <a href="#delivery">Доставка</a>
+                <a href="#benefits">Почему мы</a>
+                <a href="#reviews">Отзывы</a>
                 <a href="#contacts">Контакты</a>
             </div>
         </div>
     </div>
 
-    <!-- Герой с Vanta Globe (чистый фон) - НЕ ТРОГАЕМ -->
+    <!-- Герой с Vanta (НЕ ТРОГАЕМ) -->
     <div class="hero-vanta">
         <div id="vanta-bg"></div>
         <div class="container hero-content">
@@ -813,7 +894,7 @@
             </div>
         </div>
 
-        <!-- Модельный ряд с якорем -->
+        <!-- Станки -->
         <h2 id="machines" class="section-title section-anchor" data-aos="fade-right">Модельный ряд станков</h2>
         <div class="machines">
             <div class="machine-card" onclick="openModal('modal-200')" data-aos="flip-left" data-aos-delay="100">
@@ -851,7 +932,7 @@
             </div>
         </div>
 
-        <!-- Проволока с якорем -->
+        <!-- Проволока -->
         <div id="wire" class="wire-section section-anchor" data-aos="zoom-in" data-aos-duration="800">
             <div class="wire-header">
                 <h2>Проволока для станков</h2>
@@ -881,35 +962,92 @@
             </div>
             <p style="margin-top: 30px; color: #444; font-size: 15px; font-weight: 500;" data-aos="fade-up" data-aos-delay="500">✅ Доставка по всей Беларуси. От 100 кг — скидка.</p>
         </div>
+    </div>
 
-        <!-- Отзывы -->
-        <h2 class="section-title" data-aos="fade-right">Отзывы клиентов</h2>
-        <div class="reviews">
-            <div class="review-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="review-text">
-                    Купили станок АСГ-500 год назад. Работает без нареканий, гвоздь стабильный. Проволоку тоже у них берем — доставка быстрая.
+    <!-- Преимущества (на всю ширину, вне .container чтобы фон был на всю ширину) -->
+    <div id="benefits" class="benefits-section section-anchor" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">Почему выбирают нас</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="benefit-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Бесплатная доставка</h3>
+                    <p>По всей Беларуси при заказе от 3 станков или тонны проволоки</p>
                 </div>
-                <div class="review-author">Иван Петров</div>
-                <div class="review-company">ЧП "Петров и К", Минск</div>
-            </div>
-            <div class="review-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="review-text">
-                    Отличное оборудование. Обслуживание простое, электричество не жрет. Окупился за 4 месяца. Рекомендую!
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="benefit-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Пусконаладка</h3>
+                    <p>Наши инженеры выедут на объект, настроят оборудование и обучат персонал</p>
                 </div>
-                <div class="review-author">Сергей Иванов</div>
-                <div class="review-company">ИП Иванов, Гомель</div>
-            </div>
-            <div class="review-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="review-text">
-                    Брали АСГ-1000 под крупный заказ. Производительность впечатляет. Ребята приехали, настроили, обучили. Спасибо!
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Гарантия 3 года</h3>
+                    <p>Официальная гарантия на все станки. Постгарантийное обслуживание</p>
                 </div>
-                <div class="review-author">Алексей Козлов</div>
-                <div class="review-company">ООО "МеталлПро", Брест</div>
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Склад в Минске</h3>
+                    <p>Все популярные модели и проволока всегда в наличии. Отгрузка за 24 часа</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Футер с якорем контактов -->
+    <!-- Отзывы (на всю ширину) -->
+    <div id="reviews" class="reviews-section section-anchor">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">Отзывы клиентов</h2>
+            <div class="reviews">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-text">
+                        Купили станок АСГ-500 год назад. Работает без нареканий, гвоздь стабильный. Проволоку тоже у них берем — доставка быстрая.
+                    </div>
+                    <div class="review-author-block">
+                        <div class="review-avatar">ИП</div>
+                        <div class="review-author-info">
+                            <h4>Иван Петров</h4>
+                            <p>ЧП "Петров и К", Минск</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="review-text">
+                        Отличное оборудование. Обслуживание простое, электричество не жрет. Окупился за 4 месяца. Рекомендую!
+                    </div>
+                    <div class="review-author-block">
+                        <div class="review-avatar">СИ</div>
+                        <div class="review-author-info">
+                            <h4>Сергей Иванов</h4>
+                            <p>ИП Иванов, Гомель</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-text">
+                        Брали АСГ-1000 под крупный заказ. Производительность впечатляет. Ребята приехали, настроили, обучили. Спасибо!
+                    </div>
+                    <div class="review-author-block">
+                        <div class="review-avatar">АК</div>
+                        <div class="review-author-info">
+                            <h4>Алексей Козлов</h4>
+                            <p>ООО "МеталлПро", Брест</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
     <div id="contacts" class="footer section-anchor">
         <div class="container">
             <div>© 2026 ЗАВОД ГВОЗДЬ.БЕЛ</div>
@@ -917,7 +1055,7 @@
         </div>
     </div>
 
-    <!-- Модальные окна -->
+    <!-- Модальные окна (без изменений) -->
     <div id="modal-200" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('modal-200')">&times;</span>
@@ -1014,12 +1152,11 @@
         </div>
     </div>
 
-    <!-- Подключаем скрипты -->
+    <!-- Скрипты -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Vanta
         VANTA.GLOBE({
             el: "#vanta-bg",
             mouseControls: true,
@@ -1035,14 +1172,12 @@
             backgroundColor: 0xf0f0f0
         });
 
-        // Инициализация AOS
         AOS.init({
             duration: 800,
             once: true,
             offset: 100,
         });
 
-        // Модалки
         function openModal(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1069,7 +1204,6 @@
             }
         });
 
-        // Счетчик для цифр
         function animateNumbers() {
             const statNumbers = document.querySelectorAll('.stat-number[data-count]');
             statNumbers.forEach(stat => {
