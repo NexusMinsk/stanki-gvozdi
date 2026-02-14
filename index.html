@@ -31,9 +31,9 @@
             width: 100%;
         }
 
-        /* Шапка */
+        /* Шапка с плавным изменением прозрачности */
         .header {
-            background: #2b2b2b;
+            background: rgba(43, 43, 43, 0.98);
             color: white;
             padding: 15px 0;
             border-bottom: 3px solid #cc7b2b;
@@ -41,6 +41,14 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(30, 30, 30, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-bottom-color: #d97706;
         }
 
         .header .container {
@@ -62,6 +70,7 @@
             color: #cc7b2b;
         }
 
+        /* Навигация для десктопа */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -98,6 +107,94 @@
         .nav-links a:hover {
             color: #cc7b2b;
             border-bottom-color: #cc7b2b;
+        }
+
+        /* Бургер-меню */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 200;
+        }
+
+        .burger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Мобильная навигация */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 400px;
+            height: 100vh;
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            z-index: 150;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            border-left: 3px solid #cc7b2b;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 15px 0;
+            border-bottom: 1px solid #444;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: #cc7b2b;
+            padding-left: 10px;
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 140;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            display: block;
+            opacity: 1;
         }
 
         /* Герой с Vanta - НЕ ТРОГАЕМ */
@@ -721,30 +818,136 @@
             border-bottom-width: 2px;
         }
 
-        /* Футер */
+        /* Футер - Новый, прокачанный */
         .footer {
-            background: #2b2b2b;
-            color: #aaa;
-            padding: 40px 0;
-            margin-top: 70px;
-            border-top: 3px solid #cc7b2b;
+            background: #1e1e1e;
+            color: #f0f0f0;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+            border-top: 4px solid #cc7b2b;
+            box-shadow: 0 -20px 30px -10px rgba(0,0,0,0.3);
         }
 
         .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-col:first-child {
+            grid-column: span 1;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-logo span {
+            color: #cc7b2b;
+        }
+
+        .footer-about {
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .social-links {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
             gap: 15px;
         }
 
-        .footer a {
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: #2b2b2b;
+            border-radius: 12px;
             color: #cc7b2b;
-            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.2s ease;
+            border-bottom: 2px solid #cc7b2b;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
+        .social-links a:hover {
+            background: #cc7b2b;
+            color: white;
+            transform: translateY(-4px);
+            border-bottom-color: #9e5f22;
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #cc7b2b;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #cc7b2b;
+            transform: translateX(5px);
+        }
+
+        .footer-col ul li i {
+            color: #cc7b2b;
+            width: 20px;
+        }
+
+        .contact-info li {
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info li i {
+            color: #cc7b2b;
+            width: 20px;
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 14px;
         }
 
         /* Фото для карточек */
@@ -777,9 +980,24 @@
             .benefits-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .footer .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .burger-menu {
+                display: flex;
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+            
             .machines {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -793,20 +1011,18 @@
                 grid-template-columns: 1fr;
             }
             .header .container {
-                flex-direction: column;
+                flex-direction: row;
                 text-align: center;
-            }
-            .nav-links {
-                justify-content: center;
-            }
-            .nav-links a {
-                margin: 0 10px;
             }
             .hero-text {
                 padding: 30px;
             }
             .section-title {
                 font-size: 32px;
+            }
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
         }
 
@@ -829,18 +1045,16 @@
                 margin: 10px 0;
                 text-align: center;
             }
-            .footer .container {
-                flex-direction: column;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Шапка -->
-    <div class="header">
+    <!-- Шапка с бургер-меню -->
+    <div class="header" id="header">
         <div class="container">
             <div class="site-title">ЗАВОД <span>ГВОЗДЬ.БЕЛ</span></div>
+            
+            <!-- Десктоп навигация -->
             <div class="nav-links">
                 <a href="#machines">Станки</a>
                 <a href="#wire">Проволока</a>
@@ -848,7 +1062,24 @@
                 <a href="#reviews">Отзывы</a>
                 <a href="#contacts">Контакты</a>
             </div>
+            
+            <!-- Бургер-меню для мобилок -->
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
+    </div>
+    
+    <!-- Мобильная навигация -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#machines" onclick="closeMobileMenu()">Станки</a>
+        <a href="#wire" onclick="closeMobileMenu()">Проволока</a>
+        <a href="#benefits" onclick="closeMobileMenu()">Почему мы</a>
+        <a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
+        <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
     </div>
 
     <!-- Герой с Vanta (НЕ ТРОГАЕМ) -->
@@ -1047,11 +1278,45 @@
         </div>
     </div>
 
-    <!-- Футер -->
+    <!-- Футер - Новый, прокачанный -->
     <div id="contacts" class="footer section-anchor">
         <div class="container">
-            <div>© 2026 ЗАВОД ГВОЗДЬ.БЕЛ</div>
-            <div>+375 (29) 123-45-67 | <a href="mailto:info@gvozd.by">info@gvozd.by</a></div>
+            <div class="footer-col">
+                <div class="footer-logo">ЗАВОД <span>ГВОЗДЬ.БЕЛ</span></div>
+                <p class="footer-about">Производим гвоздильное оборудование с 2001 года. Белорусское качество, европейские стандарты, индивидуальный подход.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-viber"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#machines"><i class="fas fa-angle-right"></i> Станки</a></li>
+                    <li><a href="#wire"><i class="fas fa-angle-right"></i> Проволока</a></li>
+                    <li><a href="#benefits"><i class="fas fa-angle-right"></i> Почему мы</a></li>
+                    <li><a href="#reviews"><i class="fas fa-angle-right"></i> Отзывы</a></li>
+                </ul>
+            </div>
+            
+           
+            
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone-alt"></i> +375 (29) 123-45-67</li>
+                    <li><i class="fas fa-envelope"></i> info@gvozd.by</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Минск, ул. Индустриальная 15</li>
+                    <li><i class="fas fa-clock"></i> Пн-Пт: 8:00 - 20:00</li>
+                </ul>
+            </div>
+            
+            <div class="copyright">
+                © 2026 ЗАВОД ГВОЗДЬ.БЕЛ. Все права защищены.
+            </div>
         </div>
     </div>
 
@@ -1157,6 +1422,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Vanta
         VANTA.GLOBE({
             el: "#vanta-bg",
             mouseControls: true,
@@ -1172,12 +1438,14 @@
             backgroundColor: 0xf0f0f0
         });
 
+        // AOS
         AOS.init({
             duration: 800,
             once: true,
             offset: 100,
         });
 
+        // Модалки
         function openModal(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1204,6 +1472,7 @@
             }
         });
 
+        // Счетчик для цифр
         function animateNumbers() {
             const statNumbers = document.querySelectorAll('.stat-number[data-count]');
             statNumbers.forEach(stat => {
@@ -1237,6 +1506,44 @@
 
         document.querySelectorAll('.stats').forEach(stats => {
             observer.observe(stats);
+        });
+
+        // Бургер-меню
+        const burgerMenu = document.getElementById('burgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        
+        function toggleMobileMenu() {
+            burgerMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        }
+        
+        function closeMobileMenu() {
+            burgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        burgerMenu.addEventListener('click', toggleMobileMenu);
+        mobileNavOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Закрытие меню при клике на ссылки
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Плавное изменение прозрачности шапки при скролле
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
         window.addEventListener('load', () => {
